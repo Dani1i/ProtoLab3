@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./proto";
+
+service InformarLuna {
+    rpc InformarLuna(Comando) returns (Direccion);
+
+}
+//flecha 1
+service InformarS1{
+    rpc InformarS1(Comando) returns (Reloj);
+}
+service InformarS2{
+    rpc InformarS2(Comando) returns (Reloj);
+}
+service InformarS3{
+    rpc InformarS3(Comando) returns (Reloj);
+}
+
+service EnviarTxtS1 {
+    rpc EnviarTxt(Archivo) returns (Empty);
+}
+
+service ConsultarVanguardiaLuna{
+    rpc ConsultarVanguardiaLuna(Consulta) returns (Soldados);
+}
+
+service ConsultarLunaS1{
+    rpc ConsultarLunaS1(Consulta) returns (Soldados);    
+}
+
+service ConsultarLunaS2{
+    rpc ConsultarLunaS2(Consulta) returns (Soldados);    
+}
+
+service ConsultarLunaS3{
+    rpc ConsultarLunaS3(Consulta) returns (Soldados);    
+}
+
+service ConsultarLunaVanguardia{
+    rpc ConsultarLunaVanguardia(Soldados) returns (Empty);    
+
+}
+
+
+//#################################################################################################
+
+message Empty {}
+
+message Archivo {
+    repeated string Archivo = 1;
+    string Nombre = 2;
+}
+
+message Comando{
+    string Comando = 1;
+}
+
+message Direccion {
+    string Direccion = 1;
+}
+
+message Reloj {
+    repeated string Reloj = 1;
+    string Sector = 2;
+}
+
+message Consulta {
+    string Sector = 1;
+    string Base = 2;
+}
+
+message Soldados {
+    string Soldados = 1;
+}
+//#####################################################################################################
