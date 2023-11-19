@@ -8,6 +8,7 @@ service InformarLuna {
     rpc InformarLuna(Comando) returns (Direccion);
 
 }
+
 //flecha 1
 service InformarS1{
     rpc InformarS1(Comando) returns (Reloj);
@@ -24,7 +25,7 @@ service EnviarTxtS1 {
 }
 
 service ConsultarVanguardiaLuna{
-    rpc ConsultarVanguardiaLuna(Consulta) returns (Soldados);
+    rpc ConsultarVanguardiaLuna(Consulta) returns (Empty);
 }
 
 service ConsultarLunaS1{
@@ -40,7 +41,7 @@ service ConsultarLunaS3{
 }
 
 service ConsultarLunaVanguardia{
-    rpc ConsultarLunaVanguardia(Soldados) returns (Empty);    
+    rpc ConsultarLunaVanguardia(Empty) returns (Soldados);    
 
 }
 
