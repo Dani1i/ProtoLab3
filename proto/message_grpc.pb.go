@@ -797,7 +797,7 @@ var ConsultarLunaS3_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConsultarLunaVanguardiaClient interface {
-	ConsultarLunaVanguardia(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Soldados, error)
+	ConsultarLunaVanguardia(ctx context.Context, in *Soldados, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type consultarLunaVanguardiaClient struct {
@@ -808,8 +808,8 @@ func NewConsultarLunaVanguardiaClient(cc grpc.ClientConnInterface) ConsultarLuna
 	return &consultarLunaVanguardiaClient{cc}
 }
 
-func (c *consultarLunaVanguardiaClient) ConsultarLunaVanguardia(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Soldados, error) {
-	out := new(Soldados)
+func (c *consultarLunaVanguardiaClient) ConsultarLunaVanguardia(ctx context.Context, in *Soldados, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/main.ConsultarLunaVanguardia/ConsultarLunaVanguardia", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -821,7 +821,7 @@ func (c *consultarLunaVanguardiaClient) ConsultarLunaVanguardia(ctx context.Cont
 // All implementations must embed UnimplementedConsultarLunaVanguardiaServer
 // for forward compatibility
 type ConsultarLunaVanguardiaServer interface {
-	ConsultarLunaVanguardia(context.Context, *Empty) (*Soldados, error)
+	ConsultarLunaVanguardia(context.Context, *Soldados) (*Empty, error)
 	mustEmbedUnimplementedConsultarLunaVanguardiaServer()
 }
 
@@ -829,7 +829,7 @@ type ConsultarLunaVanguardiaServer interface {
 type UnimplementedConsultarLunaVanguardiaServer struct {
 }
 
-func (UnimplementedConsultarLunaVanguardiaServer) ConsultarLunaVanguardia(context.Context, *Empty) (*Soldados, error) {
+func (UnimplementedConsultarLunaVanguardiaServer) ConsultarLunaVanguardia(context.Context, *Soldados) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConsultarLunaVanguardia not implemented")
 }
 func (UnimplementedConsultarLunaVanguardiaServer) mustEmbedUnimplementedConsultarLunaVanguardiaServer() {
@@ -847,7 +847,7 @@ func RegisterConsultarLunaVanguardiaServer(s grpc.ServiceRegistrar, srv Consulta
 }
 
 func _ConsultarLunaVanguardia_ConsultarLunaVanguardia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(Soldados)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -859,7 +859,7 @@ func _ConsultarLunaVanguardia_ConsultarLunaVanguardia_Handler(srv interface{}, c
 		FullMethod: "/main.ConsultarLunaVanguardia/ConsultarLunaVanguardia",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConsultarLunaVanguardiaServer).ConsultarLunaVanguardia(ctx, req.(*Empty))
+		return srv.(ConsultarLunaVanguardiaServer).ConsultarLunaVanguardia(ctx, req.(*Soldados))
 	}
 	return interceptor(ctx, in, info, handler)
 }
